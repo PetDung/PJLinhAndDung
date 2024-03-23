@@ -10,7 +10,7 @@ public class DatBaseConnect {
     public static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=PolyDT_City;encrypt=true;trustServerCertificate=true";
     public static String username = "sa";
-    public static String password = "root";
+    public static String password = "12345";
 
     static {
         try {
