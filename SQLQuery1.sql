@@ -232,11 +232,8 @@ VALUES
 
 INSERT INTO Voucher (code, value, start_date, end_date, created_at, updated_at, quantity, description, is_active)
 VALUES
-('VOUCHER01', 10, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 100, 'Voucher 1', 1),
-('VOUCHER02', 20, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 200, 'Voucher 2', 1),
-('VOUCHER03', 30, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 300, 'Voucher 3', 1),
-('VOUCHER04', 40, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 400, 'Voucher 4', 1),
-('VOUCHER05', 50, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 500, 'Voucher 5', 1);
+('003', 10, '2024-01-01', '2024-03-27', '2022-01-01', '2022-01-01', 100, 'Voucher 1', 1),
+('002', 20, '2022-01-01', '2022-02-01', '2022-01-01', '2022-01-01', 200, 'Voucher 2', 1)
 
 INSERT INTO Color (color_name, description, is_active, created_at, updated_at)
 VALUES
@@ -307,21 +304,18 @@ VALUES
 ( 'Amy Davis', '321 Pine St', 400, '9999999999', 1, '2022-01-04', '2022-01-04'),
 ( 'Chris Wilson', '654 Maple St', 500, '1111111111', 1, '2022-01-05', '2022-01-05');
 
-INSERT INTO PaymentMethod ( pay_name, description, is_active, updated_at, created_at)
+INSERT INTO PaymentMethod (pay_name, description, is_active, updated_at, created_at)
 VALUES
-('Credit Card', 'Payment by credit card', 1, '2022-01-01', '2022-01-01'),
-('PayPal', 'Payment via PayPal', 1, '2022-01-02', '2022-01-02'),
-('Bank Transfer', 'Payment by bank transfer', 1, '2022-01-03', '2022-01-03'),
-('Cash on Delivery', 'Payment upon delivery', 1, '2022-01-04', '2022-01-04'),
-('Gift Card', 'Payment using gift card', 1, '2022-01-05', '2022-01-05');
+('Banking','Payment by credit card', 1, '2022-01-01', '2022-01-01'),
+('Cash', 'Payment via PayPal', 1, '2022-01-02', '2022-01-02');
 
-INSERT INTO StatusOrder ( status_name, description, is_active, updated_at, created_at)
+INSERT INTO StatusOrder (status_name, description, is_active, updated_at, created_at)
 VALUES
-('Pending', 'Order is pending', 1, '2022-01-01', '2022-01-01'),
-( 'Processing', 'Order is being processed', 1, '2022-01-02', '2022-01-02'),
-( 'Shipped', 'Order has been shipped', 1, '2022-01-03', '2022-01-03'),
-( 'Delivered', 'Order has been delivered', 1, '2022-01-04', '2022-01-04'),
-( 'Cancelled', 'Order has been cancelled', 1, '2022-01-05', '2022-01-05');
+(N'Ch? xác nh?n', 'Order is pending', 1, '2022-01-01', '2022-01-01'),
+( N'?ang x? lý', 'Order is being processed', 1, '2022-01-02', '2022-01-02'),
+( N'?ang ship', 'Order has been shipped', 1, '2022-01-03', '2022-01-03'),
+( N'Hoàn thành', 'Order has been delivered', 1, '2022-01-04', '2022-01-04'),
+( N'?ã h?y', 'Order has been cancelled', 1, '2022-01-05', '2022-01-05');
 
 INSERT INTO Orders ( account_id, customer_id, payment_method_id, status_order_id, voucher_id, quantity, total, discount, total_cost, customer_name, address,phone_number, note, updated_at, created_at)
 VALUES

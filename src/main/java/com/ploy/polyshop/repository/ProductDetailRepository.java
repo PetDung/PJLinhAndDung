@@ -19,6 +19,12 @@ public class ProductDetailRepository implements XRepository<ProductDetail, Integ
     ProductRepository productRepository = new ProductRepository();
     
     String SQL_SELECT_ALL = "SELECT * FROM ProductDetails";
+    String SQL_SELECT_BY_PRODUCT_NAME = "SELECT pd.* FROM product"
+            + " p JOIN ProductDetails pd ON p.product_id = pd.product_id"
+            + " WHERE p.product_name like ? ";
+    
+    
+    
     String SQL_SELECT_BY_PRODUCT = "SELECT * FROM ProductDetails WHERE product_id = ?";
     String SQL_UPDATE = "UPDATE ProductDetails " +
                     "SET " +
@@ -84,6 +90,10 @@ public class ProductDetailRepository implements XRepository<ProductDetail, Integ
     public List<ProductDetail> selectByProduct(Integer id){
         System.out.println("Id tìm:" + id);
         return  selectBySQL(SQL_SELECT_BY_PRODUCT, id);
+    }
+    
+    public List<ProductDetail> selectByProductName(String name){
+        return  selectBySQL(SQL_SELECT_BY_PRODUCT_NAME, "%" + name + "%");
     }
 
     @Override

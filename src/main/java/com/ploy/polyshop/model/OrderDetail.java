@@ -1,11 +1,9 @@
 package com.ploy.polyshop.model;
-
-import java.math.BigDecimal;
 import java.sql.Date;
 
 public class OrderDetail {
     private int orderDetailsId;
-    private int orderId;
+    private Order order;
     private ProductDetail productDetail;
     private int discountId;
     private Double currentPrice;
@@ -21,9 +19,9 @@ public class OrderDetail {
         // Constructor mặc định
     }
 
-    public OrderDetail(int orderDetailsId, int orderId, ProductDetail productDetail, int discountId, Double currentPrice, int quantity, Double discount, Double total, Double totalCost, boolean status, Date updatedAt, Date createdAt) {
+    public OrderDetail(int orderDetailsId, Order order, ProductDetail productDetail, int discountId, Double currentPrice, int quantity, Double discount, Double total, Double totalCost, boolean status, Date updatedAt, Date createdAt) {
         this.orderDetailsId = orderDetailsId;
-        this.orderId = orderId;
+        this.order = order;
         this.productDetail = productDetail;
         this.discountId = discountId;
         this.currentPrice = currentPrice;
@@ -44,12 +42,12 @@ public class OrderDetail {
         this.orderDetailsId = orderDetailsId;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderId(Order order) {
+        this.order = order;
     }
 
     public ProductDetail getProductDetail() {
@@ -60,7 +58,7 @@ public class OrderDetail {
         this.productDetail = productDetail;
     }
 
-    public int getDiscountId() {
+    public Integer getDiscountId() {
         return discountId;
     }
 
@@ -76,7 +74,7 @@ public class OrderDetail {
         this.currentPrice = currentPrice;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 

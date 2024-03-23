@@ -20,9 +20,17 @@ public class ImageTableCellRenderer extends DefaultTableCellRenderer {
         int width = (int) (originalWidth * ratio);
 
         Image scaled = scaleImage(image.getImage(), width, height);
-        
+
         JLabel label = new JLabel(new ImageIcon(scaled));
         label.setHorizontalAlignment(JLabel.CENTER);
+
+        if (isSelected) {
+            label.setForeground(table.getSelectionForeground());
+            label.setBackground(table.getSelectionBackground());
+        } else {
+            label.setForeground(table.getForeground());
+            label.setBackground(table.getBackground());
+        }
 
         return label;
     }
