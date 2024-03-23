@@ -170,7 +170,7 @@ create table Orders(
 	voucher_id INT,
 	quantity INT NOT NULL,
 	total DECIMAL(10,2) NOT NULL,
-	discount DECIMAL(2,2) NOT NULL,
+	discount DECIMAL(10,2) NOT NULL,
 	total_cost DECIMAL(10,2) NOT NULL,
 	customer_name NVARCHAR(50) NOT NULL,
 	address NVARCHAR(50) NOT NULL,
@@ -239,7 +239,7 @@ INSERT INTO Color (color_name, description, is_active, created_at, updated_at)
 VALUES
 (N'??', 'color', 1, '2022-01-01', '2022-01-01'),
 (N'Xanh', 'color', 1, '2022-01-02', '2022-01-02'),
-(N'Vàng', 'color', 1, '2022-01-03', '2022-01-03'),
+(N'VÃ ng', 'color', 1, '2022-01-03', '2022-01-03'),
 (N'?en', 'color', 1, '2022-01-04', '2022-01-04'),
 (N'H?ng', 'color', 1, '2022-01-05', '2022-01-05');
 
@@ -261,11 +261,8 @@ VALUES
 
 INSERT INTO ProductStatus (status_name, description, is_active, created_at, updated_at)
 VALUES
-(N'Ng?ng bán', 'Product is available', 1, '2022-01-01', '2022-01-01'),
-(N'H?t Hàng', 'Product is out of stock', 1, '2022-01-02', '2022-01-02'),
-(N'Còn Hàng', 'Product is discontinued', 1, '2022-01-03', '2022-01-03'),
-(N'S?p Ra M?t', 'Product is coming soon', 1, '2022-01-04', '2022-01-04'),
-('Limited', 'Product is limited edition', 1, '2022-01-05', '2022-01-05');
+(N'Hoáº¡t Ä‘á»™ng', 'Product is available', 1, '2022-01-01', '2022-01-01'),
+(N'Ngá»«ng hoáº¡t Ä‘á»™ng', 'Product is out of stock', 1, '2022-01-02', '2022-01-02');
 
 INSERT INTO Product ( material_id, status_id, product_name, created_at, updated_at, url_image, description)
 VALUES
@@ -311,11 +308,11 @@ VALUES
 
 INSERT INTO StatusOrder (status_name, description, is_active, updated_at, created_at)
 VALUES
-(N'Ch? xác nh?n', 'Order is pending', 1, '2022-01-01', '2022-01-01'),
-( N'?ang x? lý', 'Order is being processed', 1, '2022-01-02', '2022-01-02'),
+(N'Ch? xÃ¡c nh?n', 'Order is pending', 1, '2022-01-01', '2022-01-01'),
+( N'?ang x? lÃ½', 'Order is being processed', 1, '2022-01-02', '2022-01-02'),
 ( N'?ang ship', 'Order has been shipped', 1, '2022-01-03', '2022-01-03'),
-( N'Hoàn thành', 'Order has been delivered', 1, '2022-01-04', '2022-01-04'),
-( N'?ã h?y', 'Order has been cancelled', 1, '2022-01-05', '2022-01-05');
+( N'HoÃ n thÃ nh', 'Order has been delivered', 1, '2022-01-04', '2022-01-04'),
+( N'?Ã£ h?y', 'Order has been cancelled', 1, '2022-01-05', '2022-01-05');
 
 INSERT INTO Orders ( account_id, customer_id, payment_method_id, status_order_id, voucher_id, quantity, total, discount, total_cost, customer_name, address,phone_number, note, updated_at, created_at)
 VALUES
@@ -334,4 +331,4 @@ VALUES
 ( 5, 5, null, 89.99, 4, 0.15, 359.96, 271.97, 1, '2022-01-05', '2022-01-05');
 
 SELECT * FROM sys.dm_exec_sessions WHERE database_id = DB_ID('PolyDT_City');
-KILL 56;
+KILL 63;

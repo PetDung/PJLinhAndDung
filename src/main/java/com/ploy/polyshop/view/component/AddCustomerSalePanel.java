@@ -54,7 +54,7 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfTim = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCustomer = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -63,6 +63,12 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Tìm kiếm");
+
+        tfTim.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfTimKeyPressed(evt);
+            }
+        });
 
         tbCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,7 +115,7 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
                         .addGap(102, 102, 102)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -122,7 +128,7 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
@@ -153,6 +159,16 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void tfTimKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfTimKeyPressed
+        if(tfTim.getText().trim().isBlank()){
+            list = customerRepository.selectAll();
+            loadTable();
+            return;
+        }
+        list = customerRepository.search(tfTim.getText().trim());
+        loadTable();
+    }//GEN-LAST:event_tfTimKeyPressed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -166,7 +182,7 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbCustomer;
+    private javax.swing.JTextField tfTim;
     // End of variables declaration//GEN-END:variables
 }

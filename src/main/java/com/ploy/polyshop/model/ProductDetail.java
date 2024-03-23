@@ -7,7 +7,7 @@ public class ProductDetail {
     private Color color;
     private Size size;
     private Product product;
-    private int discountId;
+    private Integer discountId = null;
     private ProductStatus status;
     private Double price;
     private Integer quantity;
@@ -17,7 +17,7 @@ public class ProductDetail {
 
     // Constructor
    
-    public ProductDetail(int productDetailsId, Color color, Size size, Product product, int discountId, ProductStatus status, Double price, Integer quantity, String imageUrl, Date createdAt, Date updatedAt) {
+    public ProductDetail(int productDetailsId, Color color, Size size, Product product, Integer discountId, ProductStatus status, Double price, Integer quantity, String imageUrl, Date createdAt, Date updatedAt) {
         this.productDetailsId = productDetailsId;
         this.color = color;
         this.size = size;
@@ -69,11 +69,11 @@ public class ProductDetail {
         this.product = product;
     }
 
-    public int getDiscountId() {
+    public Integer getDiscountId() {
         return discountId;
     }
 
-    public void setDiscountId(int discountId) {
+    public void setDiscountId(Integer discountId) {
         this.discountId = discountId;
     }
 

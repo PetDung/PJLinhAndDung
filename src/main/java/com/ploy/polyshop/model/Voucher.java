@@ -111,4 +111,24 @@ public class Voucher {
     public void setActive(boolean active) {
         isActive = active;
     }
+    
+    public boolean isVoucherUsable() {
+        // Kiểm tra trạng thái isActive của voucher
+        if (!isActive) {
+            return false;
+        }
+        
+        // Kiểm tra ngày hiện tại có nằm trong khoảng startDate và endDate hay không
+        Date currentDate = new Date(System.currentTimeMillis());
+        if (currentDate.before(startDate) || currentDate.after(endDate)) {
+            return false;
+        }
+        
+        // Kiểm tra số lượng voucher còn lại
+        if (quantity <= 0) {
+            return false;
+        }
+        
+        return true;
+    }
 }

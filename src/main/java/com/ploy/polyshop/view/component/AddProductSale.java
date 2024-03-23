@@ -66,6 +66,7 @@ public class AddProductSale extends javax.swing.JFrame {
         cbColor = new javax.swing.JComboBox<>();
         cbSize = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,39 +145,48 @@ public class AddProductSale extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Tìm kiếm ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(802, 802, 802)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
-                        .addComponent(cbSize, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(lbThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbSize, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton1))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbThongBao))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfTim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(lbThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,6 +215,10 @@ public class AddProductSale extends javax.swing.JFrame {
                 ProductDetail oldProductDetail = orderDetail.getProductDetail();
                 if (oldProductDetail.getProductDetailsId() == productDetail.getProductDetailsId()) {
                     orderDetail.setQuantity(orderDetail.getQuantity() + value);
+                    if (!(productDetail.getQuantity() > orderDetail.getQuantity())) {
+                        thongBao("Đã thêm hết số lượng trong kho!");
+                        return;
+                    }
                     orderDetail.setTotal(productDetail.getPrice() * orderDetail.getQuantity());
                     orderDetail.setTotalCost(orderDetail.getTotal() - orderDetail.getQuantity() * orderDetail.getDiscount());
                     thongBao("Thêm thành công!" + father.getOrderDetailsList().size());
@@ -217,6 +231,8 @@ public class AddProductSale extends javax.swing.JFrame {
             newOrderDetail.setProductDetail(productDetail);
             newOrderDetail.setCurrentPrice(productDetail.getPrice());
             newOrderDetail.setDiscount(0.0);
+            newOrderDetail.setDiscountId(productDetail.getDiscountId() == 0 ? null : productDetail.getDiscountId());
+            System.out.println(newOrderDetail.getDiscountId());
             newOrderDetail.setTotal(productDetail.getPrice() * newOrderDetail.getQuantity());
             newOrderDetail.setTotalCost(newOrderDetail.getTotal() - newOrderDetail.getQuantity() * newOrderDetail.getDiscount());
 
@@ -244,7 +260,7 @@ public class AddProductSale extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTimKeyReleased
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        productDetailList = productDetailRepository.selectAll();
+        productDetailList = productDetailRepository.selectActive();
         cbColor.setSelectedIndex(0);
         cbSize.setSelectedIndex(0);
         loadTable(productDetailList);
@@ -261,11 +277,11 @@ public class AddProductSale extends javax.swing.JFrame {
     }//GEN-LAST:event_cbColorMouseClicked
 
     private void cbColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbColorActionPerformed
-  
+
     }//GEN-LAST:event_cbColorActionPerformed
 
     private void cbSizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSizeMouseClicked
-       
+
     }//GEN-LAST:event_cbSizeMouseClicked
 
     private void cbColorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbColorItemStateChanged
@@ -287,7 +303,7 @@ public class AddProductSale extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        productDetailList = productDetailRepository.selectAll();
+        productDetailList = productDetailRepository.selectActive();
         loadTable(productDetailList);
         loadThuocTinh();
     }
@@ -370,7 +386,7 @@ public class AddProductSale extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 String name = tfTim.getText().trim();
                 if (name.isBlank()) {
-                    productDetailList = productDetailRepository.selectAll();
+                    productDetailList = productDetailRepository.selectActive();
                 }
                 productDetailList = productDetailRepository.selectByProductName(name);
                 loadTable(productDetailList);
@@ -382,12 +398,14 @@ public class AddProductSale extends javax.swing.JFrame {
     }
 
     void filter() {
-        if(firstRender) return;
+        if (firstRender) {
+            return;
+        }
         int colorIndex = cbColor.getSelectedIndex();
         int sizeIndex = cbSize.getSelectedIndex();
         if (sizeIndex > 0 && colorIndex > 0 && listColor != null && listSize != null) {
-            Color color = listColor.get(colorIndex-1);
-            Size size = listSize.get(sizeIndex-1);
+            Color color = listColor.get(colorIndex - 1);
+            Size size = listSize.get(sizeIndex - 1);
             List<ProductDetail> filterList = new ArrayList<>();
             for (ProductDetail productDetail : productDetailList) {
                 if (color.getColorId() == productDetail.getColor().getColorId()
@@ -413,6 +431,7 @@ public class AddProductSale extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbSize;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbThongBao;

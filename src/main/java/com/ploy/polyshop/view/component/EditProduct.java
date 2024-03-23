@@ -681,6 +681,11 @@ public class EditProduct extends javax.swing.JPanel {
                 new ImageFromSystem().saveFile("/images/", name, fileData);
             }
             productRepository.update(product);
+            listProductDetail.forEach(item -> {
+                item.setStatus(product.getStatus());
+                productDetailRepository.update(item);
+                fillTable();
+            });
             JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Tên sản phẩm đã tồn tại!");

@@ -5,7 +5,7 @@ public class OrderDetail {
     private int orderDetailsId;
     private Order order;
     private ProductDetail productDetail;
-    private int discountId;
+    private Integer discountId;
     private Double currentPrice;
     private int quantity;
     private Double discount;
@@ -19,7 +19,7 @@ public class OrderDetail {
         // Constructor mặc định
     }
 
-    public OrderDetail(int orderDetailsId, Order order, ProductDetail productDetail, int discountId, Double currentPrice, int quantity, Double discount, Double total, Double totalCost, boolean status, Date updatedAt, Date createdAt) {
+    public OrderDetail(int orderDetailsId, Order order, ProductDetail productDetail, Integer discountId, Double currentPrice, int quantity, Double discount, Double total, Double totalCost, boolean status, Date updatedAt, Date createdAt) {
         this.orderDetailsId = orderDetailsId;
         this.order = order;
         this.productDetail = productDetail;
@@ -46,7 +46,7 @@ public class OrderDetail {
         return order;
     }
 
-    public void setOrderId(Order order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
@@ -62,7 +62,7 @@ public class OrderDetail {
         return discountId;
     }
 
-    public void setDiscountId(int discountId) {
+    public void setDiscountId(Integer discountId) {
         this.discountId = discountId;
     }
 
