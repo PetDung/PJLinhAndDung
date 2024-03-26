@@ -10,7 +10,8 @@ public class OrderDetailReository implements XRepository<OrderDetail, Integer>{
     
    String SQL_INSERT = "INSERT INTO Order_Details (orders_id, product_details_id, discount_id, current_price, quantity, discount, total, total_cost, status, updated_at, created_at) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
+   String SQL_SELECT_BY_ORDER_ID = " SELECT * FROM Order_Details WHERE orders_id = ? "; 
+   String SQL_DELETE_BY_ID = " DELETE Order_Details WHERE order_details_id = ? "; 
     
     @Override
     public void insert(OrderDetail entity) {
@@ -31,12 +32,11 @@ public class OrderDetailReository implements XRepository<OrderDetail, Integer>{
 
     @Override
     public void update(OrderDetail entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void delete(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        DatBaseConnect.executeUpdate(SQL_DELETE_BY_ID, id);
     }
 
     @Override
@@ -47,6 +47,10 @@ public class OrderDetailReository implements XRepository<OrderDetail, Integer>{
     @Override
     public List<OrderDetail> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public List<OrderDetail> selectByOrderId(int id){
+        return selectBySQL(SQL_SELECT_BY_ORDER_ID, id);
     }
 
     @Override
@@ -68,6 +72,7 @@ public class OrderDetailReository implements XRepository<OrderDetail, Integer>{
                 
                 int productDetailsId = rs.getInt("product_details_id");
                 orderDetail.setProductDetail(new ProductDetailRepository().selectById(productDetailsId));
+                
                 orderDetail.setDiscountId(rs.getInt("discount_id"));
                 orderDetail.setCurrentPrice(rs.getDouble("current_price"));
                 orderDetail.setQuantity(rs.getInt("quantity"));

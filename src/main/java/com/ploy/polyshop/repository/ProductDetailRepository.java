@@ -21,6 +21,7 @@ public class ProductDetailRepository implements XRepository<ProductDetail, Integ
     String SQL_SELECT_ACTIVE = "  SELECT * FROM ProductDetails WHERE quantity > 0 AND status_id  = 1";
 
     String SQL_SELECT_ALL = "SELECT * FROM ProductDetails";
+    String SQL_SELECT_BY_ID = "SELECT * FROM ProductDetails WHERE product_details_id = ?";
     String SQL_SELECT_BY_PRODUCT_NAME = "SELECT pd.* FROM product p JOIN ProductDetails pd ON p.product_id = pd.product_id "
             + "WHERE p.product_name LIKE ? AND pd.quantity > 0 AND pd.status_id = 1";
 
@@ -79,12 +80,11 @@ public class ProductDetailRepository implements XRepository<ProductDetail, Integ
 
     @Override
     public ProductDetail selectById(Integer id) {
-
-        return null;
+        List<ProductDetail> list = selectBySQL(SQL_SELECT_BY_ID, id);
+        return list.isEmpty() ? null : list.get(0) ;
     }
 
     public List<ProductDetail> selectByProduct(Integer id) {
-        System.out.println("Id tìm:" + id);
         return selectBySQL(SQL_SELECT_BY_PRODUCT, id);
     }
 

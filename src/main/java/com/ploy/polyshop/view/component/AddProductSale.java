@@ -78,10 +78,11 @@ public class AddProductSale extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên sản phẩm", "Màu", "Size", "Hành động", "Giá", "Giảm"
+                "Tên sản phẩm", "Màu", "Size", "Giá", "Giảm giá", "Số lượng"
             }
         ));
-        jTable1.setRowSelectionAllowed(false);
+        jTable1.setSelectionBackground(new java.awt.Color(102, 204, 255));
+        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -205,8 +206,7 @@ public class AddProductSale extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int row = jTable1.rowAtPoint(evt.getPoint());
-        int column = jTable1.columnAtPoint(evt.getPoint());
-        if (row >= 0 && column == 5) {
+        if (row >= 0 && evt.getClickCount() == 2) {
             Integer value = 1;
             ProductDetail productDetail = productDetailList.get(row);
 
@@ -320,12 +320,12 @@ public class AddProductSale extends javax.swing.JFrame {
                 model.setRowCount(0);
                 productDetailList.forEach(productDetail -> {
                     model.addRow(new Object[]{
-                        productDetail.getProduct().getProductName() + productDetail.getProduct().getMaterial().getMaterialName(),
+                        productDetail.getProduct().getProductName() +"-"+ productDetail.getProduct().getMaterial().getMaterialName(),
                         productDetail.getColor().getColorName(),
                         productDetail.getSize().getSizeName(),
                         productDetail.getPrice(),
                         0,
-                        "Thêm",});
+                        productDetail.getQuantity()});
                 });
 
             }

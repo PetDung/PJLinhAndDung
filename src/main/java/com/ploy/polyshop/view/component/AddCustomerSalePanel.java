@@ -78,7 +78,7 @@ public class AddCustomerSalePanel extends javax.swing.JFrame {
                 "Tên khách hàng", "Số điện thoại", "Địa chỉ", "Điểm tích lũy"
             }
         ));
-        tbCustomer.setGridColor(new java.awt.Color(255, 255, 255));
+        tbCustomer.setGridColor(new java.awt.Color(51, 51, 51));
         tbCustomer.setRowHeight(30);
         jScrollPane1.setViewportView(tbCustomer);
 

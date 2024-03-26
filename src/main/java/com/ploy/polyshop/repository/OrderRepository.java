@@ -13,6 +13,8 @@ public class OrderRepository implements XRepository<Order, Integer>{
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String SQL_SELECT_NEW = "SELECT TOP 1 * FROM Orders ORDER BY orders_id DESC";
     String SQL_BY_ID = "SELECT * FROM Orders WHERE orders_id  = ?";
+    
+    String SQL_SELECT_ALL = "SELECT * FROM Orders";
 
     @Override
     public void insert(Order entity) {
@@ -55,7 +57,7 @@ public class OrderRepository implements XRepository<Order, Integer>{
 
     @Override
     public List<Order> selectAll() {
-        return null;
+        return selectBySQL(SQL_SELECT_ALL);
     }
 
     @Override

@@ -45,6 +45,7 @@ public class SalePanel extends javax.swing.JPanel {
     ProductDetailRepository productDetailRepository = new ProductDetailRepository();
     Voucher voucher;
     Customer customer;
+    int sl;
 
     Order order = new Order();
 
@@ -101,6 +102,7 @@ public class SalePanel extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -305,7 +307,7 @@ public class SalePanel extends javax.swing.JPanel {
 
         jButton8.setBackground(new java.awt.Color(255, 102, 102));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Xóa khách hàng ");
+        jButton8.setText("Khách lẻ");
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton8MouseClicked(evt);
@@ -317,6 +319,14 @@ public class SalePanel extends javax.swing.JPanel {
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setBackground(new java.awt.Color(255, 102, 102));
+        jButton10.setText("Hủy đơn hàng");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -337,12 +347,6 @@ public class SalePanel extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leftPanelLayout.createSequentialGroup()
                         .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leftPanelLayout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30))
                             .addGroup(leftPanelLayout.createSequentialGroup()
                                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,10 +365,16 @@ public class SalePanel extends javax.swing.JPanel {
                                         .addComponent(tfVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton9))))
-                            .addGroup(leftPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton8)
-                                .addGap(3, 3, 3)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leftPanelLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(30, 30, 30)))
                         .addGap(17, 17, 17))))
         );
         leftPanelLayout.setVerticalGroup(
@@ -395,17 +405,16 @@ public class SalePanel extends javax.swing.JPanel {
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(jButton8)
-                        .addGap(34, 34, 34)
-                        .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(leftPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -489,31 +498,31 @@ public class SalePanel extends javax.swing.JPanel {
         int row = tbOrderDetails.getSelectedRow();
 
         if (row >= 0) {
-            if(tfSL.getText().trim().isBlank()){
-                JOptionPane.showMessageDialog(this,"Chưa điền số lượng!");
+            if (tfSL.getText().trim().isBlank()) {
+                JOptionPane.showMessageDialog(this, "Chưa điền số lượng!");
                 return;
             }
             Integer sl = Integer.parseInt(tfSL.getText());
-           
+
             OrderDetail orderDetail = orderDetailsList.get(row);
-             if(sl == 0){
+            if (sl == 0) {
                 orderDetailsList.remove(orderDetail);
                 loadTable();
                 return;
             }
             ProductDetail productDetail = orderDetail.getProductDetail();
-            if(sl>productDetail.getQuantity()){
-                JOptionPane.showMessageDialog(this,"Số lượng nhiều hơn trong kho!");
+            if (sl > productDetail.getQuantity()) {
+                JOptionPane.showMessageDialog(this, "Số lượng nhiều hơn trong kho!");
                 return;
             }
-   
+
             orderDetail.setQuantity(sl);
             orderDetail.setTotal(productDetail.getPrice() * orderDetail.getQuantity());
             orderDetail.setTotalCost(orderDetail.getTotal() - orderDetail.getQuantity() * orderDetail.getDiscount());
             loadTable();
             return;
         }
-        JOptionPane.showMessageDialog(this,"Chưa chọn sản phẩm!");
+        JOptionPane.showMessageDialog(this, "Chưa chọn sản phẩm!");
         return;
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -531,10 +540,7 @@ public class SalePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        tfTenKH.setText("");
-        tfSDT.setText("");
-        tfDiaChi.setText("");
-        customer = null;
+        resetCutomer();
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -542,27 +548,27 @@ public class SalePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        
-        String code  = tfVoucher.getText().trim();
-        if(code.isBlank()) {
+
+        String code = tfVoucher.getText().trim();
+        if (code.isBlank()) {
             JOptionPane.showMessageDialog(this, "Chưa điền code!");
             voucher = null;
             return;
         }
-        
+
         if (!code.isBlank()) {
             voucher = voucherRepsitory.selectByCode(code);
             if (voucher == null) {
                 JOptionPane.showMessageDialog(this, "Code voucher không đúng!");
                 return;
             }
-            if(!voucher.isVoucherUsable()){
+            if (!voucher.isVoucherUsable()) {
                 JOptionPane.showMessageDialog(this, "Voucher không còn hiệu lực!");
                 return;
             }
             order.setVoucherId(voucher.getVoucherId());
         }
-       loadMoney();
+        loadMoney();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void tfVoucherKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfVoucherKeyReleased
@@ -574,6 +580,35 @@ public class SalePanel extends javax.swing.JPanel {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         handlerSave("SAVE");
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+       int choice = JOptionPane.showConfirmDialog(null,
+               "Bạn có chắc muốn hủy không?",
+               "Hủy đơn hàng",
+               JOptionPane.YES_NO_OPTION);
+       if (choice == JOptionPane.YES_OPTION) {
+            resetCutomer();
+            resetOrdetails();
+       }     
+       
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    void resetCutomer() {
+        tfTenKH.setText("");
+        tfSDT.setText("");
+        tfDiaChi.setText("");
+        customer = null;
+    }
+
+    void resetOrdetails() {
+        customer = null;
+        voucher = null;
+        order = new Order();
+        orderDetailsList = new ArrayList<>();
+        tfNote.setText("");
+        tfVoucher.setText("");
+        loadTable();
+    }
 
     public void loadTable() {
         if (timer != null && timer.isRunning()) {
@@ -601,7 +636,7 @@ public class SalePanel extends javax.swing.JPanel {
                         + "\nGiảm giá: " + item.getDiscount()
                         + "\nThành tiền: " + (item.getTotalCost()),
                         item.getProductDetail().getQuantity()
-                        
+
                     });
                 });
                 loadMoney();
@@ -629,18 +664,20 @@ public class SalePanel extends javax.swing.JPanel {
                 order.setTotal(0.0);
                 order.setTotalCost(0.0);
                 order.setDiscount(0.0);
+                order.setQuantity(0);
                 for (OrderDetail item : orderDetailsList) {
                     order.setTotal(order.getTotal() + item.getTotal());
-                    order.setDiscount(order.getDiscount()+ item.getDiscount());
-                    order.setTotalCost(order.getTotalCost()+item.getTotalCost());
-                    
+                    order.setDiscount(order.getDiscount() + item.getDiscount());
+                    order.setTotalCost(order.getTotalCost() + item.getTotalCost());
+                    order.setQuantity(item.getQuantity() + order.getQuantity());
+
                 }
-                if(voucher !=null ){
-                    order.setDiscount(order.getDiscount() + ((voucher.getValue()/100.0)* order.getTotalCost()));
-                    order.setTotalCost(order.getTotalCost()- ((voucher.getValue()/100.0)* order.getTotalCost()));
-                    
+                if (voucher != null) {
+                    order.setDiscount(order.getDiscount() + ((voucher.getValue() / 100.0) * order.getTotalCost()));
+                    order.setTotalCost(order.getTotalCost() - ((voucher.getValue() / 100.0) * order.getTotalCost()));
+
                 }
-                
+
                 lbTong.setText(String.valueOf(order.getTotal()));
                 lbGiam.setText(String.valueOf(order.getDiscount()));
                 lbThanhTien.setText(String.valueOf(order.getTotalCost()));
@@ -680,9 +717,11 @@ public class SalePanel extends javax.swing.JPanel {
         order.setNote(note);
         order.setPhoneNumber(sdt);
         order.setAccountId(1); // đang fix cứng
-        order.setStatusOrderId(4);
+        order.setStatusOrderId(2);
         order.setPaymentMethodId(1);
-        if(tgbtnTienMat.isSelected()) order.setPaymentMethodId(2);
+        if (tgbtnTienMat.isSelected()) {
+            order.setPaymentMethodId(2);
+        }
         order.setCustomerName(customerName);
         if (type.equals("SAVE")) {
             order.setStatusOrderId(1);
@@ -700,8 +739,14 @@ public class SalePanel extends javax.swing.JPanel {
 
         } else {
             order.setCustomerId(customer.getCustomerId());
+            if (customerName.isBlank()) {
+                order.setCustomerName(customer.getCustomerName());
+            }
+            if(sdt.isBlank()){
+                order.setPhoneNumber(customer.getPhoneNumber());
+            }
         }
-       
+
         int value = 0;
         order.setVoucherId(null);
         if (!code.trim().isBlank()) {
@@ -710,7 +755,7 @@ public class SalePanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Code voucher không đúng!");
                 return;
             }
-            if(!voucher.isVoucherUsable()){
+            if (!voucher.isVoucherUsable()) {
                 JOptionPane.showMessageDialog(this, "Voucher không còn hiệu lực!");
                 return;
             }
@@ -718,7 +763,7 @@ public class SalePanel extends javax.swing.JPanel {
             order.setVoucherId(voucher.getVoucherId());
         }
         loadMoney();
-        
+
         LocalDate updatedAtLCD = LocalDate.now();
         Date updatedAt = Date.valueOf(updatedAtLCD);
         Date createdAt = updatedAt;
@@ -729,8 +774,7 @@ public class SalePanel extends javax.swing.JPanel {
             orderRepository.insert(order);
             order = orderRepository.getNewOrderId();
             System.out.println(order.getOrderId());
-             
-            JOptionPane.showMessageDialog(this, "Thành công!");
+
             orderDetailsList.forEach(item -> {
                 item.setOrder(order);
                 item.setCreatedAt(createdAt);
@@ -740,17 +784,18 @@ public class SalePanel extends javax.swing.JPanel {
                 pd.setQuantity(pd.getQuantity() - item.getQuantity());
                 productDetailRepository.update(pd);
             });
-            
-            customer = null;
-            voucher = null;
-            order = new Order();
-            orderDetailsList = new ArrayList<>();
+
+            resetCutomer();
+            resetOrdetails();
+
+            JOptionPane.showMessageDialog(this, "Thành công!");
             loadTable();
             loadInfoCustomer();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public static double roundToTwoDecimalPlaces(double number) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String roundedValue = decimalFormat.format(number);
@@ -761,6 +806,7 @@ public class SalePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

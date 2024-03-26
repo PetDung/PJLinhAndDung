@@ -308,9 +308,7 @@ VALUES
 
 INSERT INTO StatusOrder (status_name, description, is_active, updated_at, created_at)
 VALUES
-(N'Ch? xác nh?n', 'Order is pending', 1, '2022-01-01', '2022-01-01'),
 ( N'?ang x? lý', 'Order is being processed', 1, '2022-01-02', '2022-01-02'),
-( N'?ang ship', 'Order has been shipped', 1, '2022-01-03', '2022-01-03'),
 ( N'Hoàn thành', 'Order has been delivered', 1, '2022-01-04', '2022-01-04'),
 ( N'?ã h?y', 'Order has been cancelled', 1, '2022-01-05', '2022-01-05');
 

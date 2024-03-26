@@ -200,6 +200,7 @@ public class CustomerPanel extends javax.swing.JPanel {
         father.setContentPane(new HomePanel(father));
         father.revalidate();
         father.repaint();
+        father.pack();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
